@@ -1,0 +1,105 @@
+<div class="fluid-container">
+    <div class="header-title text-center">Current Seconds!</div>
+    <div class="col-12 timezone-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="field-container text-center">
+                    <p class="titles">UTC date</p>
+                    <p class="infoTags"> {{utcDate}}</p>
+                </div>
+                <div class="field-container text-center">
+                    <p class="titles">UTC time</p>
+                    <p id="utcTime" class="infoTags"> {{utcTime}}</p>
+                </div>
+                <div class="field-container text-center">
+                    <p class="titles">UNIX time</p>
+                    <p id="unixUtcTime" class="infoTags"> {{unixUtcTime}}</p>
+                </div>
+                <div class="mat-field-container text-center">
+                    <mat-form-field appearance="fill" class="text-center">
+                        <mat-label>Convert seconds</mat-label>
+                        <input class="infoTags" matInput type="text" [(ngModel)]="inputSeconds" (ngModelChange)="valuechange($event)">
+                    </mat-form-field>
+                </div>
+                <div class="mat-field-container text-center">
+                    <mat-form-field appearance="fill" class="text-center">
+                        <mat-label>to UTC time and date</mat-label>
+                        <input class="infoTags" matInput type="text" [(ngModel)]="utcConvertedValue" disabled="true">
+                    </mat-form-field>
+                </div>
+                <div class="mat-field-container text-center">
+                    <mat-form-field appearance="fill" class="text-center">
+                        <mat-label>to local time and date</mat-label>
+                        <input class="infoTags" matInput type="text" [(ngModel)]="convertedlocalValue"
+                            disabled="true">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="field-container text-center">
+                    <p class="titles">local date</p>
+                    <p class="infoTags"> {{localDate}}</p>
+                </div>
+                <div class="field-container text-center">
+                    <p class="titles">local time</p>
+                    <p id="localTime" class="infoTags"> {{localTime}}</p>
+                </div>
+                <div class="field-container text-center">
+                    <p class="titles">local time zone (UTC {{exactHours}}h)</p>
+                    <p id="unixUtcTime" class="infoTags"> {{localzone}}</p>
+                </div>
+                <div class="date-fields-container mat-field-container text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-4 col-sm-2 col-xs-2"></div>
+                        <div class="col-md-6 col-lg-4 col-sm-8 col-xs-8 text-center">
+                            <div class="dateInputfileds">
+                                <label class="date-label" for="dateInput">Convert local YYYY / MM / DD</label>
+                                <div class="input-date">
+                                    <input type="text" class="dateInputs right-border infoTags"
+                                        [(ngModel)]="yeartoConvert"   (ngModelChange)="showUnixSeconds($event, 'year')">
+                                    <input type="text" class="dateInputs right-border infoTags"
+                                        [(ngModel)]="monthtoConvert" maxlength="2"   (ngModelChange)="showUnixSeconds($event, 'month')">
+                                    <input type="text" class="dateInputs no-right-border infoTags"
+                                        [(ngModel)]="datetoConvert" maxlength="2"   (ngModelChange)="showUnixSeconds($event, 'daydate')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hours-container mat-field-container text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-4 col-sm-2 col-xs-2"></div>
+                        <div class="col-md-6 col-lg-4 col-sm-8 col-xs-8">
+                            <div class="timeInputfileds">
+                                <label class="time-label" for="timeInput">and HH : MM : SS</label>
+                                <div class="input-time">
+                                    <input type="text" class="timeInputs right-border infoTags"
+                                        [(ngModel)]="hoursConvert" maxlength="2"  (ngModelChange)="showUnixSeconds($event, 'hours')">
+                                    <input type="text" class="timeInputs right-border infoTags"
+                                        [(ngModel)]="minutestoConvert" maxlength="2"  (ngModelChange)="showUnixSeconds($event, 'minutes')">
+                                    <input type="text" class="timeInputs no-right-border infoTags"
+                                        [(ngModel)]="secondstoConvert" maxlength="2"  (ngModelChange)="showUnixSeconds($event, 'seconds')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mat-field-container epoch-container text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-4 col-sm-2 col-xs-2"></div>
+                        <div class="col-md-6 col-lg-4 col-sm-8 col-xs-8">
+                            <mat-form-field appearance="fill" class="text-center">
+                                <mat-label>to seconds since epoch: </mat-label>
+                                <input matInput type="text" class="infoTags" [(ngModel)]="convertedUnixSeconds"
+                                    disabled="true">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
